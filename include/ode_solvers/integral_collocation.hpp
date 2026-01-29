@@ -17,6 +17,8 @@
 #ifndef ODE_SOLVERS_INTEGRAL_COLLOCATION_HPP
 #define ODE_SOLVERS_INTEGRAL_COLLOCATION_HPP
 
+#include "basis.hpp"
+
 #ifndef DISABLE_NLP_ORACLES
 #include "nlp_oracles/nlp_hpolyoracles.hpp"
 #include "nlp_oracles/nlp_vpolyoracles.hpp"
