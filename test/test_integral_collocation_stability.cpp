@@ -1,10 +1,16 @@
 // VolEsti (volume computation and sampling library)
 
+// Copyright (c) 2012-2020 Vissarion Fisikopoulos
+// Copyright (c) 2018-2020 Apostolos Chalkis
+// Copyright (c) 2026 Mohit Lakra
+
+// Licensed under GNU LGPL.3, see LICENCE file
+
 // Verifies the numerical stability and time-scaling correctness of the Integral Collocation
 // solver by checking for energy conservation in a Harmonic Oscillator (x'' = -x) simulation.
 
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Issue120
+#define BOOST_TEST_MODULE IntegralCollocationStability
 #include <boost/test/unit_test.hpp>
 #include <Eigen/Dense>
 #include "ode_solvers/integral_collocation.hpp"
@@ -27,13 +33,13 @@ struct HarmonicOscillator {
         double x = state[0][0];
         double v = state[0][1];
         MockPoint deriv(2);
-        deriv.set_coord(0, v);    // dx/dt = v
-        deriv.set_coord(1, -x);   // dv/dt = -x
+        deriv.set_coord(0, v);
+        deriv.set_coord(1, -x);
         return deriv;
     }
 };
 
-BOOST_AUTO_TEST_CASE(test_instability_issue_120) {
+BOOST_AUTO_TEST_CASE(test_integral_collocation_stability) {
     double eta = 0.1; 
     int steps = 100;
     
