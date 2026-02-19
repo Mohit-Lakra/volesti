@@ -29,7 +29,7 @@ struct MockPolytope {
 };
 
 struct HarmonicOscillator {
-    MockPoint operator()(int idx, const std::vector<MockPoint>& state, double t) {
+    MockPoint operator()(unsigned int idx, const std::vector<MockPoint>& state, double t) {
         double x = state[0][0];
         double v = state[0][1];
         MockPoint deriv(2);
